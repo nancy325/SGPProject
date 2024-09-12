@@ -17,6 +17,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $row = $result->fetch_assoc();
             if (password_verify($password, $row['Password'])) {
                 echo "Login successful!";
+                header('file:///C:/xampp/htdocs/BookmyCelebration/components/Home.html');
             } else {
                 echo "Invalid password.";
             }
