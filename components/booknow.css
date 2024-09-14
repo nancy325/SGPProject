@@ -1,0 +1,116 @@
+/* Center the form */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Full viewport height */
+    margin: 0;
+    background-color: #bfa5a3 /* Background color for contrast */
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center the fields horizontally */
+    gap: 10px;
+    max-width: 350px;
+    padding: 20px;
+    border-radius: 20px;
+    background-color: whitesmoke;
+    color: #2f4858;
+    border: 1px solid ##2f4858;
+    box-shadow: 0px 4px 10px #2f4858(0, 0, 0, 0.3); /* Add shadow for better effect */
+}
+/* Align inputs and fix margins */
+.flex {
+    display: flex;
+    justify-content: space-between; /* Put items side by side */
+    width: 100%; /* Ensure the flex container takes full width */
+    gap: 30px;
+}
+
+
+
+/* Other input styling */
+.input {
+    background-color: #333;
+    color: #fff;
+    width: 100%;
+    padding: 20px 5px 5px 10px;
+    outline: 0;
+    border: 1px solid rgba(105, 105, 105, 0.397);
+    border-radius: 10px;
+}
+
+.form label {
+    width: 100%; /* Ensure form elements take full width inside the form */
+    position: relative;
+    text-align: left;
+}
+
+.form label .input {
+    background-color: #f1e4e4;
+    color: #2f4858;
+    width: 100%;
+    padding: 20px 05px 05px 10px;
+    outline: 0;
+    border: 1px solid rgba(105, 105, 105, 0.397);
+    border-radius: 10px;
+}
+
+.form label .input + span {
+    color: #2f4858(7, 7, 7, 0.5);
+    position: absolute;
+    left: 10px;
+    top: 0px;
+    font-size: 0.9em;
+    cursor: text;
+    transition: 0.3s ease;
+}
+
+.form label .input:focus + span,
+.form label .input:valid + span {
+    color: #2f4858;
+    top: 0px;
+    font-size: 0.7em;
+    font-weight: 600;
+}
+
+.submit {
+    border: none;
+    outline: none;
+    padding: 10px;
+    border-radius: 10px;
+    color: #fff;
+    font-size: 16px;
+    transform: .3s ease;
+    background-color: #2f4858;
+    width: 100%; /* Ensure the submit button takes full width */
+}
+
+.submit:hover {
+    background-color: #b18b92;
+}
+/* Center the form */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Styling the radio button labels */
+.form label {
+    color: #0e0f0e; /* Change label text color */
+    /* Optional: Adjust font size */
+}
+
+/* Aligning the radio buttons side by side */
+.flex1 {
+    
+    gap: 70px; /* Space between radio buttons */
+   
+}
+
+
+
