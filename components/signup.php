@@ -1,44 +1,61 @@
 <?php
-include 'database.php';
+var_dump($_POST);
+  // Check if the form has been submitted
+  if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Retrieve posted values
+    $firstname = $_POST["firstname"];
+    $secondname = $_POST["secondname"];
+    $email = $_POST["Email"];
+    $password1 = $_POST["pswd1"];
+    $password2 = $_POST["pswd2"];
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $firstname = test_input($_POST["firstname"]);
-    $secondname = test_input($_POST["secondname"]);
-    $email = test_input($_POST["Email"]);
-    $password1 = test_input($_POST["pswd1"]);
-    $password2 = test_input($_POST["pswd2"]);
-
-    // Validate first name and second name
-    if (!preg_match("/^[a-zA-Z-' ]*$/", $firstname) || !preg_match("/^[a-zA-Z-' ]*$/", $secondname)) {
-        echo "Only letters and white space allowed in names.";
+    // Check if passwords match
+    if ($password1 != $password2) {
+      echo "Passwords do not match";
     } else {
-        // Check if email is valid
-        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            echo "Invalid email format.";
-        } else {
-            // Check if passwords match
-            if ($password1 !== $password2) {
-                echo "Passwords do not match.";
-            } else {
-                // Hash the password
-                $hashed_password = password_hash($password1, PASSWORD_DEFAULT);
+      // Validate the input data
+      if (isset($firstname) && !empty($firstname) &&
+          isset($secondname) && !empty($secondname) &&
+          isset($email) && !empty($email) &&
+          isset($password1) && !empty($password1)) {
+        // Connect to database
+        $con = mysqli_connect("localhost", "root", "", "bookmycelebration");
 
-                // Insert into database
-                $sql = "INSERT INTO user (Firstname, Lastname, Email, Password) VALUES ('$firstname', '$secondname', '$email', '$hashed_password')";
-                if ($conn->query($sql) === TRUE) {
-                    echo "New record created successfully";
-                } else {
-                    echo "Error: " . $sql . "<br>" . $conn->error;
-                }
-            }
+        // Check connection
+        if (!$con) {
+          die("Connection failed: " . mysqli_connect_error());
         }
-    }
-}
 
-function test_input($data) {
-    $data = trim($data);
-    $data = stripslashes($data);
-    $data = htmlspecialchars($data);
-    return $data;
-}
+        // Prepare and bind
+        $stmt = $con->prepare("INSERT INTO users (firstname, secondname, email, password) VALUES (?, ?, ?, ?)");
+        $stmt->bind_param("ssss", $firstname, $secondname, $email, $password1);
+
+        // Execute the query
+        $stmt->execute();
+
+        // Check if query was successful
+        if ($stmt->affected_rows > 0) {
+          // Set session variables
+          session_start();
+          $_SESSION["firstname"] = $firstname;
+          $_SESSION["email"] = $email;
+
+          // Set cookies
+          setcookie("firstname", $firstname, time() + (86400 * 30)); // 30 days
+          setcookie("email", $email, time() + (86400 * 30)); // 30 days
+
+          // Redirect to homepage
+          header('Location: http://localhost/BookmyCelebration-Copy/components/index.html');
+        } else {
+          echo "Error: " . $stmt->error;
+        }
+
+        // Close statement and database connection
+        $stmt->close();
+        mysqli_close($con);
+      } else {
+        echo "Please fill in all the required fields!";
+      }
+    }
+  }
 ?>

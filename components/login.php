@@ -1,36 +1,58 @@
 <?php
-include 'database.php';
-
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $email = test_input($_POST["Email"]);
-    $password = test_input($_POST["pswd"]);
-
-    // Validate email
-    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        echo "Invalid email format.";
+  // Check if the form has been submitted
+  if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Retrieve posted values
+    $email = $_POST["Email"];
+    if (isset($_POST["password"])) {
+        $password = $_POST["password"];
     } else {
-        // Check if user exists
-        $sql = "SELECT * FROM user WHERE Email='$email'";
-        $result = $conn->query($sql);
-
-        if ($result->num_rows > 0) {
-            $row = $result->fetch_assoc();
-            if (password_verify($password, $row['Password'])) {
-                echo "Login successful!";
-                header('file:///C:/xampp/htdocs/BookmyCelebration/components/Home.html');
-            } else {
-                echo "Invalid password.";
-            }
-        } else {
-            echo "No user found with that email.";
-        }
+        echo "Password field is required";
     }
-}
 
-function test_input($data) {
-    $data = trim($data);
-    $data = stripslashes($data);
-    $data = htmlspecialchars($data);
-    return $data;
-}
+    // Validate the input data
+    if (isset($email) && !empty($email) &&
+        isset($password) && !empty($password)) {
+      // Connect to database
+      $con = mysqli_connect("localhost", "root", "", "bookmycelebration");
+
+      // Check connection
+      if (!$con) {
+        die("Connection failed: " . mysqli_connect_error());
+      }
+
+      // Prepare and bind
+      $stmt = $con->prepare("SELECT * FROM users WHERE email = ? AND password = ?");
+      $stmt->bind_param("ss", $email, $password);
+
+      // Execute the query
+      $stmt->execute();
+
+      // Get the result
+      $result = $stmt->get_result();
+
+      // Check if user exists
+      if ($result->num_rows > 0) {
+        // Set session variables
+        session_start();
+        $row = $result->fetch_assoc();
+        $_SESSION["firstname"] = $row["firstname"];
+        $_SESSION["email"] = $row["email"];
+
+        // Set cookies
+        setcookie("firstname", $row["firstname"], time() + (86400 * 30)); // 30 days
+        setcookie("email", $row["email"], time() + (86400 * 30)); // 30 days
+
+        // Redirect to homepage
+        header('Location: http://localhost/BookmyCelebration/components/index.html');
+      } else {
+        echo "Invalid email or password";
+      }
+
+      // Close statement and database connection
+      $stmt->close();
+      mysqli_close($con);
+    } else {
+      echo "Please fill in all the required fields!";
+    }
+  }
 ?>

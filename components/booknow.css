@@ -1,116 +1,85 @@
-/* Center the form */
-body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh; /* Full viewport height */
+/* Ensure body and html take full height and form is centered */
+body, html {
+    height: 100%;
     margin: 0;
-    background-color: #bfa5a3 /* Background color for contrast */
-}
-
-.form {
     display: flex;
     flex-direction: column;
-    align-items: center; /* Center the fields horizontally */
-    gap: 10px;
-    max-width: 350px;
-    padding: 20px;
-    border-radius: 20px;
-    background-color: whitesmoke;
-    color: #2f4858;
-    border: 1px solid ##2f4858;
-    box-shadow: 0px 4px 10px #2f4858(0, 0, 0, 0.3); /* Add shadow for better effect */
 }
-/* Align inputs and fix margins */
+
+/* Container for the form */
+.form-container {
+    flex-grow: 1; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f5f5f5;
+    padding: 30px 0;
+}
+
+/* Style for the form itself */
+.form {
+    width: 70%; /* Adjust form width */
+    padding: 20px;
+    background-color: #bfa5a3;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    font-family: 'Raleway', sans-serif;
+
+}
+
+/* Smaller screen adjustments */
+@media (max-width: 767px) {
+    .form {
+        width: 85%; /* Increase form width for smaller screens */
+    }
+}
+
+@media (max-width: 479px) {
+    .form {
+        width: 95%; /* Nearly full width for small mobile devices */
+    }
+}
+
+/* Utility classes */
 .flex {
     display: flex;
-    justify-content: space-between; /* Put items side by side */
-    width: 100%; /* Ensure the flex container takes full width */
-    gap: 30px;
+    gap: 10px;
+    justify-content: space-between;
 }
 
+.flex label {
+    flex: 1;
+}
 
-
-/* Other input styling */
-.input {
-    background-color: #333;
-    color: #fff;
+/* General input styles */
+input, select {
     width: 100%;
-    padding: 20px 5px 5px 10px;
-    outline: 0;
-    border: 1px solid rgba(105, 105, 105, 0.397);
-    border-radius: 10px;
-}
-
-.form label {
-    width: 100%; /* Ensure form elements take full width inside the form */
-    position: relative;
-    text-align: left;
-}
-
-.form label .input {
-    background-color: #f1e4e4;
-    color: #2f4858;
-    width: 100%;
-    padding: 20px 05px 05px 10px;
-    outline: 0;
-    border: 1px solid rgba(105, 105, 105, 0.397);
-    border-radius: 10px;
-}
-
-.form label .input + span {
-    color: #2f4858(7, 7, 7, 0.5);
-    position: absolute;
-    left: 10px;
-    top: 0px;
-    font-size: 0.9em;
-    cursor: text;
-    transition: 0.3s ease;
-}
-
-.form label .input:focus + span,
-.form label .input:valid + span {
-    color: #2f4858;
-    top: 0px;
-    font-size: 0.7em;
-    font-weight: 600;
-}
-
-.submit {
-    border: none;
-    outline: none;
     padding: 10px;
-    border-radius: 10px;
-    color: #fff;
-    font-size: 16px;
-    transform: .3s ease;
-    background-color: #2f4858;
-    width: 100%; /* Ensure the submit button takes full width */
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 5px;
 }
 
-.submit:hover {
-    background-color: #b18b92;
-}
-/* Center the form */
-body {
+/* Aligning radio buttons and labels with less space */
+label.radio-group {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+    /* Reduced gap between radio and text */
 }
 
-/* Styling the radio button labels */
-.form label {
-    color: #0e0f0e; /* Change label text color */
-    /* Optional: Adjust font size */
+/* Submit button */
+button.submit {
+    background-color: #2f4858;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    display: block;
+    margin-top: 20px; /* Add space above button */
+    font-family: 'Georgia', serif;
 }
 
-/* Aligning the radio buttons side by side */
-.flex1 {
-    
-    gap: 70px; /* Space between radio buttons */
-   
+button.submit:hover {
+    background-color: #555;
 }
-
-
-

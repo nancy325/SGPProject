@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book My Celebration - Reviews</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            width: 50%;
+            margin: auto;
+            overflow: hidden;
+        }
+        header {
+            background: #fff;
+            color: #fff;
+            padding: 10px 0;
+            text-align: center;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2em;
+        }
+        .review-form, .review-list {
+            background: #bfa5a3;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            box-shadow: 0 0 10px #2f4858(0,0,0,0.1);
+        }
+        .review-form h2, .review-list h2 {
+            margin-top: 0;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .form-group input[type="submit"] {
+            background: #2f4858;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+        .form-group input[type="submit"]:hover {
+            background: #2f4858;
+        }
+        .review-item {
+            border-bottom: 1px solid #ddd;
+            padding: 10px 0;
+        }
+        .review-item:last-child {
+            border-bottom: none;
+        }
+        .review-item h3 {
+            margin: 0 0 5px;
+        }
+        .review-item p {
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+  
+    <link rel="stylesheet" href="../style.css" />
+    <div>
+      <link href="./navbar.css" rel="stylesheet" />
+      <header class="navbar-container">
+        <header data-thq="thq-navbar" class="navbar-navbar-interactive">
+          <img
+            alt="Event Agency Logo"
+            src="logo.jpg"crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w5MTMyMXwwfDF8c2VhcmNofDMzfHxiYWxsb258ZW58MHx8fHwxNzIyNjc5ODUzfDA&amp;ixlib=rb-4.0.3&amp;q=80&amp;w=1080"
+            class="navbar-image1"
+          />
+          <div data-thq="thq-navbar-nav" class="navbar-desktop-menu">
+            <nav class="navbar-links">
+              <span class="thq-link thq-body-small"><span> <a href="index.html">Home</a></span>
+            </span>
+            <span class="thq-link thq-body-small">
+              <span> <a href="pricing.html">Packages</a></span>
+            </span>
+            <span class="thq-link thq-body-small">
+              <span> <a href="">Gallery</a></span>
+            </span>
+            <span class="thq-link thq-body-small">
+              <span> <a href="contact.html">Contact</a></span>
+            </span>
+            <span class="thq-link thq-body-small">
+              <span> <a href="testimonial.html">Review</a></span>
+            </span>
+            </nav>
+            
+             
+            </div>
+          </div>
+          <div data-thq="thq-burger-menu" class="navbar-burger-menu">
+            <svg viewBox="0 0 1024 1024" class="navbar-icon">
+              <path
+                d="M128 554.667h768c23.552 0 42.667-19.115 42.667-42.667s-19.115-42.667-42.667-42.667h-768c-23.552 0-42.667 19.115-42.667 42.667s19.115 42.667 42.667 42.667zM128 298.667h768c23.552 0 42.667-19.115 42.667-42.667s-19.115-42.667-42.667-42.667h-768c-23.552 0-42.667 19.115-42.667 42.667s19.115 42.667 42.667 42.667zM128 810.667h768c23.552 0 42.667-19.115 42.667-42.667s-19.115-42.667-42.667-42.667h-768c-23.552 0-42.667 19.115-42.667 42.667s19.115 42.667 42.667 42.667z"
+              ></path>
+            </svg>
+          </div>
+          <div data-thq="thq-mobile-menu" class="navbar-mobile-menu">
+            <div class="navbar-nav">
+              <div class="navbar-top">
+                <img
+                  alt="Event Agency Logo"
+                  src="https://images.unsplash.com/photo-1708368429776-21c4fde7a6f0?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w5MTMyMXwwfDF8c2VhcmNofDMzfHxiYWxsb258ZW58MHx8fHwxNzIyNjc5ODUzfDA&amp;ixlib=rb-4.0.3&amp;q=80&amp;w=1080"
+                  class="navbar-logo"
+                />
+                <div data-thq="thq-close-menu" class="navbar-close-menu">
+                  <svg viewBox="0 0 1024 1024" class="navbar-icon2">
+                    <path
+                      d="M810 274l-238 238 238 238-60 60-238-238-238 238-60-60 238-238-238-238 60-60 238 238 238-238z"
+                    ></path>
+                  </svg>
+                </div>
+              </div>
+              
+              <nav class="navbar-links1">
+                <span class="thq-link thq-body-small"><span>Home</span></span>
+                <span class="thq-link thq-body-small">
+                  <span>Services</span>
+                </span>
+                <span class="thq-link thq-body-small">
+                  <span>Gallery</span>
+                </span>
+                <span class="thq-link thq-body-small">
+                  <span>Contact</span>
+                </span>
+                <span class="thq-link thq-body-small"><span>Link5</span></span>
+              </nav>
+            </div>
+            <div class="navbar-buttons1">
+              <button class="thq-button-filled">Login</button>
+              <button class="thq-button-outline">Register</button>
+            </div>
+          </div>
+        </header>
+      </header>
+    </div>
+    <script
+      data-section-id="navbar"
+      src="https://unpkg.com/@teleporthq/teleport-custom-scripts"
+    ></script>
+   
+    <div class="container">
+        <div class="review-form">
+            <h2>Submit Your Review</h2>
+            <form method="post" action="review1.php" >
+                <div class="form-group">
+                    <label for="name">Your Name:</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Your Email:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="review">Your Review:</label>
+                    <textarea id="review" name="review" rows="5" required></textarea>
+                </div>
+                <div class="form-group">
+                  <label for="image">Upload an Image:</label>
+                  <input type="file" id="image" name="image" accept="image/*">
+              </div>
+                <div class="form-group">
+                    <input type="submit" value="Submit Review">
+                </div>
+            </form>
+        </div></div>
+      
+</body>
+</html>
